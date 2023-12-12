@@ -1,0 +1,16 @@
+---
+- name: Issue Webhook
+  hosts: localhost
+  tasks:
+    - name: Send Webhook
+      uri:
+        url: "https://webhook.site/be3da92e-99e6-4e48-ac4e-6c87cd0401de"
+        method: POST
+        body_format: json
+        body: '{"key": "value", "another_key": "another_value"}'
+        validate_certs: no  # Change to yes if your webhook server has a valid SSL certificate
+      register: result
+
+    - name: Display Webhook Response
+      debug:
+        var: result
